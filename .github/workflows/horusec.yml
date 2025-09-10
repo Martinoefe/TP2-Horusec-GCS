@@ -28,16 +28,18 @@ jobs:
           sudo apt-get install -y jq
 
       - name: Fail pipeline on HIGH/CRITICAL
-        if: success()
         run: |
           test -f horusec-report.json || (echo "No se generó horusec-report.json" && exit 1)
-          HIGH_CRIT=$(jq '[.analysisVulnerabilities[]? | select(.severity=="HIGH" or .severity=="CRITICAL")] | length' horusec-report.json)
+          HIGH_CRIT=$(jq '[.analysisVulnerabilities[]?.vulnerabilities
+                           | select(.severity=="HIGH" or .severity=="CRITICAL")]
+                          | length' horusec-report.json)
           echo "Vulnerabilidades HIGH/CRITICAL: $HIGH_CRIT"
           if [ "$HIGH_CRIT" -gt 0 ]; then
-            echo "❌ Bloqueado: Hay vulnerabilidades ALTA/CRÍTICA."
+            echo "Bloqueado: Hay vulnerabilidades ALTA/CRÍTICA."
             exit 1
           fi
-          echo "✅ OK: No hay HIGH/CRITICAL."
+          echo "OK: No hay HIGH/CRITICAL."
+
 
       - name: Upload Horusec report
         uses: actions/upload-artifact@v4

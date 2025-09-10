@@ -1,13 +1,76 @@
 {
   "version": "v2.8.0",
-  "id": "5720aae1-7013-4c90-9e6e-666eb81568ec",
+  "id": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
   "repositoryID": "00000000-0000-0000-0000-000000000000",
   "repositoryName": "",
   "workspaceID": "00000000-0000-0000-0000-000000000000",
   "workspaceName": "",
   "status": "success",
   "errors": "",
-  "createdAt": "2025-09-10T22:38:09.101974089Z",
-  "finishedAt": "2025-09-10T22:38:10.774542551Z",
-  "analysisVulnerabilities": null
+  "createdAt": "2025-09-10T23:34:43.622816207Z",
+  "finishedAt": "2025-09-10T23:34:45.391488968Z",
+  "analysisVulnerabilities": [
+    {
+      "vulnerabilityID": "00000000-0000-0000-0000-000000000000",
+      "analysisID": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
+      "createdAt": "2025-09-10T23:34:45.391513343Z",
+      "vulnerabilities": {
+        "vulnerabilityID": "aaaade65-c6fe-4172-aa50-17ca15eaf53f",
+        "line": "5",
+        "column": "53",
+        "confidence": "MEDIUM",
+        "file": "core/src/.horusec/5eb61a7d-c0b1-4229-ba75-73d4ba937b79/com/chess/game/EjemploVulnerable.java",
+        "code": "private static final String AWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\";",
+        "details": "(1/2) * Possible vulnerability detected: AWS Manager ID\nWhen use AWS Manager ID is recommended use vault or environment variable encrypted for the best security. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.\n         \n(2/2) * Possible vulnerability detected: Potential Hard-coded credential\nThe software contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.",
+        "securityTool": "HorusecEngine",
+        "language": "Leaks",
+        "severity": "CRITICAL",
+        "type": "Vulnerability",
+        "commitAuthor": "-",
+        "commitEmail": "-",
+        "commitHash": "-",
+        "commitMessage": "-",
+        "commitDate": "-",
+        "rule_id": "HS-LEAKS-1",
+        "vulnHash": "765bf90e9665f36835e071b3bed2da86e31178a932d2d5a2bca4ff55b8307cf2",
+        "deprecatedHashes": [
+          "3cb3cd6119083dd973023c2fa32498421a13607240c6e32b9e71dc6e60134d9b",
+          "1dcca4d156bea86514125f84c11a3fe407c7ecdde0cfcf8b546913a665bef930"
+        ],
+        "securityToolVersion": "",
+        "securityToolInfoUri": ""
+      }
+    },
+    {
+      "vulnerabilityID": "00000000-0000-0000-0000-000000000000",
+      "analysisID": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
+      "createdAt": "2025-09-10T23:34:45.391519978Z",
+      "vulnerabilities": {
+        "vulnerabilityID": "27c5833f-3293-4f56-bf39-3c76b7bc961f",
+        "line": "6",
+        "column": "43",
+        "confidence": "MEDIUM",
+        "file": "core/src/.horusec/5eb61a7d-c0b1-4229-ba75-73d4ba937b79/com/chess/game/EjemploVulnerable.java",
+        "code": "private static final String AWS_SECRET_ACCESS_KEY = \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\";",
+        "details": "(1/1) * Possible vulnerability detected: Potential Hard-coded credential\nThe software contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.",
+        "securityTool": "HorusecEngine",
+        "language": "Leaks",
+        "severity": "CRITICAL",
+        "type": "Vulnerability",
+        "commitAuthor": "-",
+        "commitEmail": "-",
+        "commitHash": "-",
+        "commitMessage": "-",
+        "commitDate": "-",
+        "rule_id": "HS-LEAKS-25",
+        "vulnHash": "a4d972e0400f21e9b723000a6441cdb0dfefb3ffc5ebef5e8f0dced4b31a628b",
+        "deprecatedHashes": [
+          "82725f7e146265d33c2d98fa1134b318d6fd5d341709e8038a1363840fe7fbbb",
+          "b82110504b78b5e25d7bce176bf0f5adb54207dbfc8d6d2644ecffa9c8eaa74e"
+        ],
+        "securityToolVersion": "",
+        "securityToolInfoUri": ""
+      }
+    }
+  ]
 }
