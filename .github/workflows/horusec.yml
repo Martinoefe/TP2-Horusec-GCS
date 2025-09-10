@@ -1,0 +1,47 @@
+name: Run Horusec Analysis
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  horusec-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Horusec (Docker)
+        run: |
+          set -euxo pipefail
+          docker run --rm \
+            -v "${GITHUB_WORKSPACE}:/src" -w /src \
+            horuszup/horusec-cli:latest \
+            sh -lc 'horusec start -D -p . -o json -O horusec-report.json'
+          ls -la horusec-report.json
+          test -f horusec-report.json
+
+      - name: Install jq
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
+
+      - name: Fail pipeline on HIGH/CRITICAL
+        if: success()
+        run: |
+          test -f horusec-report.json || (echo "No se generó horusec-report.json" && exit 1)
+          HIGH_CRIT=$(jq '[.analysisVulnerabilities[]? | select(.severity=="HIGH" or .severity=="CRITICAL")] | length' horusec-report.json)
+          echo "Vulnerabilidades HIGH/CRITICAL: $HIGH_CRIT"
+          if [ "$HIGH_CRIT" -gt 0 ]; then
+            echo "❌ Bloqueado: Hay vulnerabilidades ALTA/CRÍTICA."
+            exit 1
+          fi
+          echo "✅ OK: No hay HIGH/CRITICAL."
+
+      - name: Upload Horusec report
+        uses: actions/upload-artifact@v4
+        with:
+          name: horusec-report
+          path: horusec-report.json
+          retention-days: 5

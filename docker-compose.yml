@@ -1,0 +1,7 @@
+services:
+  horusec:
+    image: horuszup/horusec-cli:latest
+    working_dir: /src
+    volumes:
+      - .:/src
+    entrypoint: ["horusec", "start", "-D", "-p", ".", "-o", "json", "-O", "horusec-report.json"]
