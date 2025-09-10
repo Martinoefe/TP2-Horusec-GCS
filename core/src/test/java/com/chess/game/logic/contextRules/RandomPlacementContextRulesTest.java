@@ -38,7 +38,8 @@ class RandomPlacementContextRulesTest {
     }
 
 
-    private static Stream<Arguments> provideArgumentsOf_possibleCastlingMovementTests() {
+    private static Stream<Arguments> provideArgumentsOf_possibleCastlingMovementTests() 
+    {
         return Stream.of(
                 //normal castling rules should still apply
                 getWhiteRightCastlingInitialPositionArguments(),
