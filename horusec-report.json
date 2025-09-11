@@ -1,25 +1,25 @@
 {
   "version": "v2.8.0",
-  "id": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
+  "id": "385e3765-0834-4182-bb41-cf84a28bffde",
   "repositoryID": "00000000-0000-0000-0000-000000000000",
   "repositoryName": "",
   "workspaceID": "00000000-0000-0000-0000-000000000000",
   "workspaceName": "",
   "status": "success",
   "errors": "",
-  "createdAt": "2025-09-10T23:34:43.622816207Z",
-  "finishedAt": "2025-09-10T23:34:45.391488968Z",
+  "createdAt": "2025-09-11T12:25:35.85447329Z",
+  "finishedAt": "2025-09-11T12:25:37.665180891Z",
   "analysisVulnerabilities": [
     {
       "vulnerabilityID": "00000000-0000-0000-0000-000000000000",
-      "analysisID": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
-      "createdAt": "2025-09-10T23:34:45.391513343Z",
+      "analysisID": "385e3765-0834-4182-bb41-cf84a28bffde",
+      "createdAt": "2025-09-11T12:25:37.665205335Z",
       "vulnerabilities": {
-        "vulnerabilityID": "aaaade65-c6fe-4172-aa50-17ca15eaf53f",
+        "vulnerabilityID": "01a115d5-aa92-4130-a02c-13ad73c0869c",
         "line": "5",
         "column": "53",
         "confidence": "MEDIUM",
-        "file": "core/src/.horusec/5eb61a7d-c0b1-4229-ba75-73d4ba937b79/com/chess/game/EjemploVulnerable.java",
+        "file": "core/src/.horusec/385e3765-0834-4182-bb41-cf84a28bffde/com/chess/game/EjemploVulnerable.java",
         "code": "private static final String AWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\";",
         "details": "(1/2) * Possible vulnerability detected: AWS Manager ID\nWhen use AWS Manager ID is recommended use vault or environment variable encrypted for the best security. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.\n         \n(2/2) * Possible vulnerability detected: Potential Hard-coded credential\nThe software contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.",
         "securityTool": "HorusecEngine",
@@ -32,10 +32,10 @@
         "commitMessage": "-",
         "commitDate": "-",
         "rule_id": "HS-LEAKS-1",
-        "vulnHash": "765bf90e9665f36835e071b3bed2da86e31178a932d2d5a2bca4ff55b8307cf2",
+        "vulnHash": "da47ce95d4a4fd9f046edb69ca7175189513512bc3344683edb534d1e697d457",
         "deprecatedHashes": [
-          "3cb3cd6119083dd973023c2fa32498421a13607240c6e32b9e71dc6e60134d9b",
-          "1dcca4d156bea86514125f84c11a3fe407c7ecdde0cfcf8b546913a665bef930"
+          "80a0523f13fc52a1a03c3147b1ba75bc624ab91fdfa556580a6b6be84e486b0c",
+          "90795e06232054b0c056ef1c56e76b1b02e2a91ac6b8479622499e4e105d3220"
         ],
         "securityToolVersion": "",
         "securityToolInfoUri": ""
@@ -43,14 +43,14 @@
     },
     {
       "vulnerabilityID": "00000000-0000-0000-0000-000000000000",
-      "analysisID": "5eb61a7d-c0b1-4229-ba75-73d4ba937b79",
-      "createdAt": "2025-09-10T23:34:45.391519978Z",
+      "analysisID": "385e3765-0834-4182-bb41-cf84a28bffde",
+      "createdAt": "2025-09-11T12:25:37.665214275Z",
       "vulnerabilities": {
-        "vulnerabilityID": "27c5833f-3293-4f56-bf39-3c76b7bc961f",
+        "vulnerabilityID": "4a7975e9-e8ed-4d3d-a6fa-880e304314b6",
         "line": "6",
         "column": "43",
         "confidence": "MEDIUM",
-        "file": "core/src/.horusec/5eb61a7d-c0b1-4229-ba75-73d4ba937b79/com/chess/game/EjemploVulnerable.java",
+        "file": "core/src/.horusec/385e3765-0834-4182-bb41-cf84a28bffde/com/chess/game/EjemploVulnerable.java",
         "code": "private static final String AWS_SECRET_ACCESS_KEY = \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\";",
         "details": "(1/1) * Possible vulnerability detected: Potential Hard-coded credential\nThe software contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data. For more information checkout the CWE-798 (https://cwe.mitre.org/data/definitions/798.html) advisory.",
         "securityTool": "HorusecEngine",
@@ -63,10 +63,10 @@
         "commitMessage": "-",
         "commitDate": "-",
         "rule_id": "HS-LEAKS-25",
-        "vulnHash": "a4d972e0400f21e9b723000a6441cdb0dfefb3ffc5ebef5e8f0dced4b31a628b",
+        "vulnHash": "78ca79acd35cda1416d7f6d6eb46843ed4682271b9535c85bce1a9d55775744a",
         "deprecatedHashes": [
-          "82725f7e146265d33c2d98fa1134b318d6fd5d341709e8038a1363840fe7fbbb",
-          "b82110504b78b5e25d7bce176bf0f5adb54207dbfc8d6d2644ecffa9c8eaa74e"
+          "12eee76ff97b2b19ec32223f60cfffd04b0638eaa1df3fb3233ac6093a113e11",
+          "78f2393de39e4f4e7a5e8d878de13047c65b2cc7052955e9af58caf7a9c62b32"
         ],
         "securityToolVersion": "",
         "securityToolInfoUri": ""
