@@ -48,6 +48,7 @@ jobs:
 
     # Esto te permite descargar el archivo horusec-report.json desde la interfaz web de GitHub.
       - name: Upload Horusec report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: horusec-report
