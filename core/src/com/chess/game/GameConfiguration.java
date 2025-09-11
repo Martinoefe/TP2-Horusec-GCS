@@ -19,4 +19,5 @@ public class GameConfiguration {
     public ContextRules getContextRule() {
         return contextRule;
     }
+    
 }
