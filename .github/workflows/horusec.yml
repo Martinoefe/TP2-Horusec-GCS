@@ -1,5 +1,6 @@
 name: Run Horusec Analysis
 
+# Este workflow se ejecuta automáticamente en Pull Requests hacia la rama master
 on:
   pull_request:
     branches: [master]
@@ -12,6 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+    # Se corre Horusec dentro de un contenedor Docker y genera el reporte de vulnerabilidades en formato JSON (horusec-report.json).
       - name: Run Horusec (Docker)
         run: |
           set -euxo pipefail
@@ -22,24 +24,31 @@ jobs:
           ls -la horusec-report.json
           test -f horusec-report.json
 
+    # jq permite procesar el archivo JSON que genera Horusec.
       - name: Install jq
         run: |
           sudo apt-get update -y
           sudo apt-get install -y jq
 
+    # Cuenta cuántas vulnerabilidades HIGH o CRITICAL hay.
+    # Si encuentra al menos 1, corta el pipeline (exit 1).
+    # Si no hay, imprime que está OK.
       - name: Fail pipeline on HIGH/CRITICAL
-        if: success()
         run: |
           test -f horusec-report.json || (echo "No se generó horusec-report.json" && exit 1)
-          HIGH_CRIT=$(jq '[.analysisVulnerabilities[]? | select(.severity=="HIGH" or .severity=="CRITICAL")] | length' horusec-report.json)
+          HIGH_CRIT=$(jq '[.analysisVulnerabilities[]?.vulnerabilities
+                           | select(.severity=="HIGH" or .severity=="CRITICAL")]
+                          | length' horusec-report.json)
           echo "Vulnerabilidades HIGH/CRITICAL: $HIGH_CRIT"
           if [ "$HIGH_CRIT" -gt 0 ]; then
-            echo "❌ Bloqueado: Hay vulnerabilidades ALTA/CRÍTICA."
+            echo "Bloqueado: Hay vulnerabilidades ALTA/CRÍTICA."
             exit 1
           fi
-          echo "✅ OK: No hay HIGH/CRITICAL."
+          echo "OK: No hay HIGH/CRITICAL."
 
+    # Esto te permite descargar el archivo horusec-report.json desde la interfaz web de GitHub.
       - name: Upload Horusec report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: horusec-report

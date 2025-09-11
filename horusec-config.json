@@ -9,7 +9,9 @@
       "gradle",
       "assets",
       "lib",
-      ".git"
+      ".git",
+      ".horusec",
+      "horusec-report.json"
     ]
   }
 }
